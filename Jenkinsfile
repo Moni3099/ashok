@@ -8,6 +8,7 @@
   }
   stage('Build Docker Imager'){
    sh 'sudo docker build -t gcr.io/jenkins-250111/tomcat . '
+   sh 'gcloud auth configure-docker'
   }
   stage('Push image') {
       withDockerRegistry(credentialsId: 'gcr:jenkins_gcr', url: 'https://gcr.io'){
